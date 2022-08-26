@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { CustomButtonProps } from "../types/pickerTypes";
+import { CustomButtonProps } from "../types";
 
 const CustomButton = ({
   title,

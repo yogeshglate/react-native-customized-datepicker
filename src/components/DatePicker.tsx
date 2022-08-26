@@ -1,37 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
+import DateTimePicker from "react-native-date-picker";
 import { CustomButton } from "../components";
-import { DatePickerProps } from "../types/pickerTypes";
+import { Colors, verticalScale } from "../theme";
+import { DatePickerProps } from "../types";
 import { DatePickerStyles } from "./styles";
-import { verticalScale } from "../theme/Metrics";
 
 const DatePicker = ({
+  date,
   visible,
   onCancel,
   onConfirm,
-  pickerTitleStyle = DatePickerStyles.datePickerTitle,
+  pickerTitleColor = Colors.black,
   pickerTitle = "Select Date",
   cancelButtonText = "Cancel",
   confirmButtonText = "Confirm",
-  cancelButtonStyle = DatePickerStyles.cancelButton,
-  confirmButtonStyle = DatePickerStyles.confirmButton,
-  cancelButtonTextStyle = DatePickerStyles.buttonTitle,
-  confirmButtonTextStyle = DatePickerStyles.buttonTitle,
-  backgroundColor = "#2F2D35",
+  confirmButtonBackground = Colors.primary,
+  cancelButtonBackground = Colors.secondary,
+  cancelButtonTextColor = Colors.black,
+  confirmButtonTextColor = Colors.white,
+  backgroundColor = Colors.white,
+  maximumDate = new Date(),
+  minimumDate,
+  theme = "auto",
+  androidVariant = "nativeAndroid",
+  modalAnimationType = "slide",
+  cancelButtonBorderColor = "transparent",
+  mode = "date",
 }: DatePickerProps) => {
+  const [selectedDate, setSelectedDate] = useState<Date>(date);
+
+  function dismissModal() {
+    onCancel(false);
+  }
+
+  function setDate() {
+    onConfirm(selectedDate);
+    dismissModal();
+  }
+
   return (
     <Modal
       transparent={true}
-      animationType={"slide"}
+      animationType={modalAnimationType}
       visible={visible}
       supportedOrientations={["portrait"]}
-      onRequestClose={onCancel}
+      onRequestClose={dismissModal}
     >
       <View style={{ flex: 1 }}>
         <TouchableOpacity
           style={DatePickerStyles.container}
           activeOpacity={1}
-          onPress={onCancel}
+          onPress={dismissModal}
         >
           <TouchableOpacity
             style={{
@@ -53,33 +73,55 @@ const DatePicker = ({
                   marginVertical: verticalScale(20),
                 }}
               >
-                <Text style={pickerTitleStyle}>{pickerTitle}</Text>
+                <Text
+                  style={[
+                    DatePickerStyles.datePickerTitle,
+                    { color: pickerTitleColor },
+                  ]}
+                >
+                  {pickerTitle}
+                </Text>
               </View>
               <View style={DatePickerStyles.dateContainer}>
-                <Text style={DatePickerStyles.buttonTitle}>
-                  Date Selector Here
-                </Text>
+                <DateTimePicker
+                  date={selectedDate}
+                  onDateChange={setSelectedDate}
+                  fadeToColor={backgroundColor}
+                  mode={mode}
+                  {...{ maximumDate, minimumDate, theme, androidVariant }}
+                  style={{ ...{ backgroundColor } }}
+                />
               </View>
               <View style={DatePickerStyles.buttonContainer}>
                 <CustomButton
                   {...{
                     title: cancelButtonText,
-                    buttonStyle: cancelButtonStyle,
-                    titleStyle: cancelButtonTextStyle,
-                    onPress: onCancel,
+                    buttonStyle: [
+                      DatePickerStyles.cancelButton,
+                      {
+                        backgroundColor: cancelButtonBackground,
+                        borderColor: cancelButtonBorderColor,
+                      },
+                    ],
+                    titleStyle: [
+                      DatePickerStyles.cancelButtonTitle,
+                      { color: cancelButtonTextColor },
+                    ],
+                    onPress: dismissModal,
                   }}
                 />
                 <CustomButton
                   {...{
                     title: confirmButtonText,
-                    buttonStyle: confirmButtonStyle,
-                    titleStyle: confirmButtonTextStyle,
-                    onPress: () => {
-                      if (onConfirm) {
-                        onConfirm();
-                        onCancel();
-                      }
-                    },
+                    buttonStyle: [
+                      DatePickerStyles.confirmButton,
+                      { backgroundColor: confirmButtonBackground },
+                    ],
+                    titleStyle: [
+                      DatePickerStyles.confirmButtonTitle,
+                      { color: confirmButtonTextColor },
+                    ],
+                    onPress: setDate,
                   }}
                 />
               </View>

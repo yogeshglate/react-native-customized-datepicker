@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import {
+  Colors,
   horizontalScale,
   Metrics,
   moderateScale,
   verticalScale,
-} from "../../theme/Metrics";
+} from "../../theme";
 
 export const styles = StyleSheet.create({
   container: {
@@ -16,10 +17,11 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
-    borderColor: "#8B8B8B",
     borderWidth: Metrics.borderLineWidth,
+    borderColor: Colors.gray,
     height: verticalScale(30),
     width: horizontalScale(100),
+    backgroundColor: Colors.secondary,
   },
   confirmButton: {
     justifyContent: "center",
@@ -27,10 +29,11 @@ export const styles = StyleSheet.create({
     height: verticalScale(30),
     width: horizontalScale(100),
     borderRadius: 5,
-    backgroundColor: "#FF0066",
+    backgroundColor: Colors.primary,
     marginHorizontal: horizontalScale(10),
   },
-  buttonTitle: { color: "#FFFFFF", fontWeight: "bold" },
+  confirmButtonTitle: { color: Colors.white, fontWeight: "bold" },
+  cancelButtonTitle: { color: Colors.black, fontWeight: "bold" },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "flex-end",
@@ -43,7 +46,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   datePickerTitle: {
-    color: "#FFFFFF",
+    color: Colors.black,
     fontWeight: "bold",
     fontSize: moderateScale(18),
     paddingHorizontal: horizontalScale(20),
@@ -51,7 +54,7 @@ export const styles = StyleSheet.create({
   datePickerModal: {
     height: verticalScale(320),
     width: horizontalScale(340),
-    maxWidth: 350,
+    maxWidth: horizontalScale(350),
     borderRadius: 5,
   },
 });

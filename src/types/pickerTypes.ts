@@ -1,18 +1,27 @@
+import { Dispatch, SetStateAction } from "react";
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
 
 export interface DatePickerProps {
+  date: Date;
   visible: boolean;
-  pickerTitleStyle?: StyleProp<TextStyle>;
+  onCancel: Dispatch<SetStateAction<boolean>>;
+  onConfirm: Dispatch<SetStateAction<Date>>;
+  pickerTitleColor?: string;
   pickerTitle?: string;
   cancelButtonText?: string;
   confirmButtonText?: string;
   backgroundColor?: string;
-  cancelButtonStyle?: StyleProp<ViewStyle>;
-  confirmButtonStyle?: StyleProp<ViewStyle>;
-  cancelButtonTextStyle?: StyleProp<TextStyle>;
-  confirmButtonTextStyle?: StyleProp<TextStyle>;
-  onCancel: () => void;
-  onConfirm?: () => void;
+  confirmButtonBackground?: string;
+  cancelButtonBackground?: string;
+  cancelButtonTextColor?: string;
+  confirmButtonTextColor?: string;
+  maximumDate?: Date;
+  minimumDate?: Date;
+  theme?: "dark" | "light" | "auto";
+  androidVariant?: "nativeAndroid" | "iosClone";
+  modalAnimationType?: "fade" | "none" | "slide";
+  cancelButtonBorderColor?: string;
+  mode?: "date" | "time" | "datetime";
 }
 
 export interface CustomButtonProps {

@@ -10,9 +10,9 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "date-fns": "^2.29.2",
     "react": "18.0.0",
-    "react-native": "0.69.4"
+    "react-native": "0.69.4",
+    "react-native-date-picker": "^4.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

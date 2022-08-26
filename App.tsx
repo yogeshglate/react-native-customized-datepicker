@@ -1,21 +1,26 @@
-import { format } from "date-fns";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { DatePicker } from "./src/components";
 
 const App = () => {
-  const [date, setDate] = useState<string>(format(new Date(), "dd-MM-yyyy"));
+  const [date, setDate] = useState<Date>(new Date());
   const [show, setShow] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Select Date</Text>
-      <TouchableOpacity activeOpacity={1} onPress={() => setShow(true)}>
-        <Text style={styles.dateButton}>
-          {format(new Date(), "dd-MM-yyyy")}
-        </Text>
-      </TouchableOpacity>
-      <DatePicker visible={show} onCancel={() => setShow(false)} />
+      <View style={styles.dateButtonContainer}>
+        <Button title="Open Date Picker" onPress={() => setShow(true)} />
+      </View>
+      <DatePicker
+        date={new Date()}
+        visible={show}
+        onCancel={setShow}
+        onConfirm={setDate}
+      />
+      <View style={{ marginTop: 20 }}>
+        <Text style={styles.text}>Selected Date</Text>
+        <Text style={styles.text}>{date.toString()}</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -23,15 +28,14 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 20,
     justifyContent: "center",
+    backgroundColor: "#CCCCCC",
   },
-  text: { marginBottom: 10 },
-  dateButton: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    borderColor: "gray",
-    borderWidth: 1,
+  text: { color: "#000000", textAlign: "center" },
+  dateButtonContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
