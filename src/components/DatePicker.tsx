@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import DateTimePicker from "react-native-date-picker";
 import { CustomButton } from "../components";
@@ -38,6 +38,10 @@ const DatePicker = ({
     onConfirm(selectedDate);
     dismissModal();
   }
+
+  useEffect(() => {
+    setSelectedDate(date);
+  }, [date]);
 
   return (
     <Modal

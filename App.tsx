@@ -12,7 +12,7 @@ const App = () => {
         <Button title="Open Date Picker" onPress={() => setShow(true)} />
       </View>
       <DatePicker
-        date={new Date()}
+        date={date}
         visible={show}
         onCancel={setShow}
         onConfirm={setDate}
