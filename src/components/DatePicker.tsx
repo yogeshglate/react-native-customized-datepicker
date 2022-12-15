@@ -27,11 +27,15 @@ const DatePicker = ({
   modalAnimationType = "slide",
   cancelButtonBorderColor = "transparent",
   mode = "date",
+  cancelButtonStyle,
+  confirmButtonStyle,
+  buttonTextSize,
 }: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState<Date>(date);
 
   function dismissModal() {
     onCancel(false);
+    setSelectedDate(date);
   }
 
   function setDate() {
@@ -106,10 +110,14 @@ const DatePicker = ({
                         backgroundColor: cancelButtonBackground,
                         borderColor: cancelButtonBorderColor,
                       },
+                      cancelButtonStyle,
                     ],
                     titleStyle: [
                       DatePickerStyles.cancelButtonTitle,
-                      { color: cancelButtonTextColor },
+                      {
+                        color: cancelButtonTextColor,
+                        fontSize: buttonTextSize,
+                      },
                     ],
                     onPress: dismissModal,
                   }}
@@ -120,10 +128,14 @@ const DatePicker = ({
                     buttonStyle: [
                       DatePickerStyles.confirmButton,
                       { backgroundColor: confirmButtonBackground },
+                      confirmButtonStyle,
                     ],
                     titleStyle: [
                       DatePickerStyles.confirmButtonTitle,
-                      { color: confirmButtonTextColor },
+                      {
+                        color: confirmButtonTextColor,
+                        fontSize: buttonTextSize,
+                      },
                     ],
                     onPress: setDate,
                   }}

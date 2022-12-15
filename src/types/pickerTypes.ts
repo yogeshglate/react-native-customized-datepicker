@@ -22,6 +22,9 @@ export interface DatePickerProps {
   modalAnimationType?: "fade" | "none" | "slide";
   cancelButtonBorderColor?: string;
   mode?: "date" | "time" | "datetime";
+  cancelButtonStyle?: StyleProp<ViewStyle>;
+  confirmButtonStyle?: StyleProp<ViewStyle>;
+  buttonTextSize?: number;
 }
 
 export interface CustomButtonProps {

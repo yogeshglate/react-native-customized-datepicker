@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { DatePicker } from "./src/components";
+import { horizontalScale, moderateScale, verticalScale } from "./src/theme";
 
 const App = () => {
-  const [date, setDate] = useState<Date>(new Date());
+  const [date, setDate] = useState<Date>(new Date("15 Dec 2004"));
   const [show, setShow] = useState<boolean>(false);
 
   return (
@@ -16,6 +17,11 @@ const App = () => {
         visible={show}
         onCancel={setShow}
         onConfirm={setDate}
+        buttonTextSize={moderateScale(16)}
+        cancelButtonStyle={styles.buttonStyle}
+        confirmButtonStyle={styles.buttonStyle}
+        maximumDate={new Date("15 Dec 2004")}
+        minimumDate={new Date("15 Dec 1922")}
       />
       <View style={{ marginTop: 20 }}>
         <Text style={styles.text}>Selected Date</Text>
@@ -37,6 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonStyle: { height: verticalScale(40), width: horizontalScale(100) },
 });
 
 export default App;

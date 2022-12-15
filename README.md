@@ -130,6 +130,9 @@ export default () => {
 | `modalAnimationType`      | Modal apperance animatiion choose from 3 animation variants "fade", "none" , "slide"; default to "slide" [Optional] |
 | `theme`                   | iOS 13+: The theme of the modal. `"light"`, `"dark"`, `"auto"`. default to `"auto"`. [Optional]                     |
 | `mode`                    | The date picker mode. `"datetime"`, `"date"`, `"time"` [Optional]                                                   |
+| `cancelButtonStyle`       | Cancel Button Style [Optional]                                                                                      |
+| `confirmButtonStyle`      | Confirm Button Style [Optional]                                                                                     |
+| `buttonTextSize`          | Font Size for the buttons [Optional]                                                                                |
 
 ## Support this package!
 

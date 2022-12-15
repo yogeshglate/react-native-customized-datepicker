@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: horizontalScale(20),
   },
   datePickerModal: {
-    height: verticalScale(320),
+    height: verticalScale(340),
     width: horizontalScale(340),
     maxWidth: horizontalScale(350),
     borderRadius: 5,
