@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Modal, Text, TouchableOpacity, View } from "react-native";
 import DateTimePicker from "react-native-date-picker";
 import { CustomButton } from "../components";
-import { Colors, verticalScale } from "../theme";
+import { Colors, horizontalScale, verticalScale } from "../theme";
 import { DatePickerProps } from "../types";
-import { DatePickerStyles } from "./styles";
+import { datePickerModal, DatePickerStyles } from "./styles";
 
 const DatePicker = ({
   date,
@@ -30,6 +30,8 @@ const DatePicker = ({
   cancelButtonStyle,
   confirmButtonStyle,
   buttonTextSize,
+  modalHeight = verticalScale(340),
+  modalWidth = horizontalScale(340),
 }: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState<Date>(date);
 
@@ -52,7 +54,13 @@ const DatePicker = ({
       transparent={true}
       animationType={modalAnimationType}
       visible={visible}
-      supportedOrientations={["portrait"]}
+      supportedOrientations={[
+        "portrait",
+        "landscape",
+        "landscape-left",
+        "landscape-right",
+        "portrait-upside-down",
+      ]}
       onRequestClose={dismissModal}
     >
       <View style={{ flex: 1 }}>
@@ -70,7 +78,7 @@ const DatePicker = ({
           >
             <View
               style={[
-                DatePickerStyles.datePickerModal,
+                datePickerModal({ ...{ modalHeight, modalWidth } }),
                 {
                   backgroundColor: backgroundColor,
                 },

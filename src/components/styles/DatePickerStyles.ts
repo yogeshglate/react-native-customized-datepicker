@@ -51,10 +51,18 @@ export const styles = StyleSheet.create({
     fontSize: moderateScale(18),
     paddingHorizontal: horizontalScale(20),
   },
-  datePickerModal: {
-    height: verticalScale(340),
-    width: horizontalScale(340),
-    maxWidth: horizontalScale(350),
-    borderRadius: 5,
-  },
 });
+
+export const datePickerModal = ({
+  modalHeight,
+  modalWidth,
+}: {
+  modalHeight: number;
+  modalWidth: number;
+}) => {
+  return {
+    height: modalHeight,
+    width: modalWidth,
+    borderRadius: 5,
+  };
+};

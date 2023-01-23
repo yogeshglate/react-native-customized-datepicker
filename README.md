@@ -133,6 +133,8 @@ export default () => {
 | `cancelButtonStyle`       | Cancel Button Style [Optional]                                                                                      |
 | `confirmButtonStyle`      | Confirm Button Style [Optional]                                                                                     |
 | `buttonTextSize`          | Font Size for the buttons [Optional]                                                                                |
+| `modalHeight`             | Height for the datpicker[Optional]                                                                                  |
+| `modalWidth`              | Width for the datepicker[Optional]                                                                                  |
 
 ## Support this package!
 

@@ -25,6 +25,8 @@ export interface DatePickerProps {
   cancelButtonStyle?: StyleProp<ViewStyle>;
   confirmButtonStyle?: StyleProp<ViewStyle>;
   buttonTextSize?: number;
+  modalHeight?:number;
+  modalWidth?:number;
 }
 
 export interface CustomButtonProps {
