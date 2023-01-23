@@ -1,3 +1,6 @@
-import { styles as DatePickerStyles } from "./DatePickerStyles";
+import {
+  styles as DatePickerStyles,
+  datePickerModal,
+} from "./DatePickerStyles";
 
-export { DatePickerStyles };
+export { DatePickerStyles, datePickerModal };
